@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-# from fastapi.templating import Jinja2Templates
 from routes import router
 from dataframe import data
 from dashboard import dashboard
@@ -9,19 +8,14 @@ from apply_label import label_router
 from models import Base
 from db import engine
 from middleware import middleware_router 
-# from llm_model.llm_routes import LLMrouter
+from llm_routes import LLMrouter
+from whatsapp import message
 import os
 from fastapi.middleware.cors import CORSMiddleware
-
-    
-
-
-# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 app = FastAPI()
 
-#CORS SETUP
 origins = [
     "http://localhost:5173",
 ]
@@ -34,16 +28,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
-# templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
-
 Base.metadata.create_all(bind=engine)
 
-# app.include_router(router)
-# app.include_router(data)
-# app.include_router(label_router)
-app.include_router(dashboard)
-# app.include_router(kpi)
-app.include_router(middleware_router)
 
-# app.include_router(LLMrouter)
+app.include_router(dashboard)
+app.include_router(middleware_router)
+app.include_router(message)
+app.include_router(LLMrouter)
