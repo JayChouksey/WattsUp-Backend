@@ -37,8 +37,8 @@ class ClusterInsights(Base):
 
 
 class MessageRequest(BaseModel):
+    username: str
     phone_number: str
-    message: str
     wait_time: Optional[int] = 15
     close_tab: Optional[bool] = True
 
