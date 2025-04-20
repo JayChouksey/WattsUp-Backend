@@ -1,0 +1,82 @@
+Project Title: Smart AI Assistant for Home Energy Optimization
+Team Name: Power Rangers
+
+1. Introduction
+
+1.1 Purpose
+The primary goal of this system is to help users understand and optimize their home energy usage using artificial intelligence. It uses energy data, machine learning models, and a user-friendly dashboard to classify energy behavior (as Optimal, Normal, or Wasteful) and offer actionable insights to reduce waste and improve efficiency.
+
+1.2 Scope
+The project focuses on optimizing household energy consumption using AI. 
+It includes features such as energy data simulation, intelligent usage labeling, pattern detection, and personalized recommendations. 
+Real-time smart device integration is out of scope for this version.
+
+2. Overall Description
+
+2.1 Product Perspective
+The system is a standalone AI Assistant.
+
+Backend: FastAPI
+Speed & Performance: FastAPI is one of the fastest Python web frameworks. Since our system handles data generation, model inference, clustering, and API responses — speed is crucial.
+Asynchronous Support: Energy data simulation, ML predictions, and dashboard responses can run asynchronously.
+
+Frontend: React.js
+Component-Based Architecture; React lets us build reusable UI components for Charts (e.g., appliance usage, label breakdown), KPI cards, ETC.
+Fast and Responsive UI: React is optimized for performance with its virtual DOM. This helps us create a snappy and responsive user experience.
+
+Database: SQLite
+Good Performance for Read/Write: Our app involves frequent read/write operations (e.g., storing generated data, updating labels, querying for visualizations), and SQLite handles these well for small to medium datasets.
+Ideal for Simulated Data: Since we’re generating simulated energy usage data locally, SQLite is more than capable of handling our data for storage, labeling, clustering, and retrieval.
+
+ML: Scikit-learn, KMeans, etc.
+Automated Classification of Energy Usage:
+    Analyze energy usage patterns across multiple features (appliance, duration, time, etc.)
+    Automatically label usage as Optimal, Normal, or Wasteful
+    Learn from past patterns to improve future predictions
+
+Clustering for Deeper Insights:
+    Group similar usage behaviors (e.g., night vs. daytime usage)
+    Detect outliers or abnormal consumption
+    Help the assistant provide context-aware suggestions
+
+2.2 Product Functions
+Simulate and store home energy usage data
+Label usage as Optimal, Normal, Wasteful
+Cluster usage patterns
+Provide insights and tips using LLM
+Visualize data through interactive dashboard
+
+2.3 User Characteristics
+Homeowners or residents
+Non-technical users
+Energy-conscious users
+
+2.4 Assumptions and Dependencies
+Users will trust AI-generated suggestions
+Simulated data is realistic enough for valid analysis
+
+
+3. Specific Requirements
+
+3.1 Functional Requirements
+
+FR1: Generate simulated energy usage data
+FR2: Label energy usage via ML model
+FR3: Cluster usage patterns (e.g., by time, room)
+FR4: Generate natural language insights using LLM
+FR5: Display interactive visualizations and KPIs
+FR6: User can filter data (by date, room, appliance)
+
+3.2 Non-Functional Requirements
+
+NFR1: System should respond within 2 seconds
+NFR2: Dashboard must support cross-browser access
+NFR3: Model predictions should be explainable
+NFR4: UI should be clean and responsive
+
+
+4. Future Scope
+Integration with smart devices for real-time data
+Integration qith voice assistants
+Mobile version
+

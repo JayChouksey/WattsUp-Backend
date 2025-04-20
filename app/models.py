@@ -1,5 +1,8 @@
+import re
+from typing import Optional
 from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
 from sqlalchemy.orm import declarative_base
+from pydantic import BaseModel, Field, validator
 
 Base = declarative_base()
 
@@ -31,3 +34,15 @@ class ClusterInsights(Base):
     avg_temperature = Column(Float)
     avg_hour = Column(Float)
     usage_pattern = Column(String)
+
+
+class MessageRequest(BaseModel):
+    username: str
+    phone_number: str
+    wait_time: Optional[int] = 15
+    close_tab: Optional[bool] = True
+
+
+class MessageResponse(BaseModel):
+    status: str
+    message: str

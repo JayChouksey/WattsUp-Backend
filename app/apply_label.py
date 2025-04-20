@@ -16,7 +16,6 @@ def apply_ai_labels():
 
     try:
         records = session.query(EnergyUsage).all()
-
         for record in records:
             if record.label:
                 continue
